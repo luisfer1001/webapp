@@ -47,6 +47,10 @@ export const InsertFormulario = async function (
         };
     }
 
+    //const numBeneficiariosInteger = parseInt(numBeneficiarios);
+    //console.log(typeof numBeneficiarios);
+    // console.log( numBeneficiarios);
+
     const data = {
         nombre,
         apellidos,
@@ -56,8 +60,17 @@ export const InsertFormulario = async function (
         numBeneficiarios,
         fechaIngreso,
     };
-     console.log(data);
+    // console.log(data);
 
+     
+    
+    //console.log("prueba1");
+    // console.log(typeof estadoCivil);
+    // console.log(estadoCivil);
+    // console.log(typeof numBeneficiarios);
+    // console.log(typeof numBeneficiariosInteger);
+    // console.log(numBeneficiariosInteger);
+    
 
     const url = "http://localhost:3000/formularios";
     let requestOptions = {
@@ -132,6 +145,10 @@ export const UpdateFormulario  = async function (
         },
         body: JSON.stringify(data),
     };
+
+
+   
+
 
     const c = await fetch(url, requestOptions)
         .then((response) => {

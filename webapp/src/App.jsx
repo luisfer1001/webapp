@@ -9,6 +9,13 @@ import {
   UpdateFormulario,
  } from './componentes/api';
 
+// SE INCLUYE ESTO 
+ import {
+  GetImagenes,
+  InsertImagenes,
+  UpdateImagenes,
+} from './componentes/api_imagenes';
+
 const defaultState = {
   numIdentificacion: "",
   nombre: "",
@@ -16,6 +23,13 @@ const defaultState = {
   tipoIdentificacion:"",
   numBeneficiarios:"",
   //estadoCivil:"",
+  fechaNacimiento:"",
+  fechaIngreso:"",
+  
+  
+  // campos Imagenes
+  //nombreImagen,
+
 };
 
 
@@ -93,20 +107,20 @@ function App() {
 
   const handlerInsert = async () => {
     // Extrae los datos del formulario del estado 'data'
-    const { nombre, apellidos, tipoIdentificacion, numBeneficiarios } = data;
+    const { numIdentificacion,nombre, apellidos, tipoIdentificacion, numBeneficiarios, fechaNacimiento, fechaIngreso } = data;
     console.log(data);
     //----------------------------------------------------------------------------
-    const numBeneficiariosInteger = parseInt(numBeneficiarios);
-    console.log(typeof numBeneficiarios);
+    //const numBeneficiariosInteger = parseInt(numBeneficiarios);
+    //console.log(typeof numBeneficiarios);
     //const estadoCivilInteger = parseInt(estadoCivil);
     //console.log(typeof estadoCivil);
     // ---------------------------------------------------------------------------
     // Define valores predeterminados para otros campos del formulario
     //const tipoIdentificacion = "1"
     const estadoCivil = "1";
-    const fechaNacimiento = "10/10/2021";
+    //const fechaNacimiento = "10/10/2021";
     //const numBeneficiarios = "1";
-    const fechaIngreso = "10/10/2023";
+    //const fechaIngreso = "10/10/2023";
     const response = await InsertFormulario(
       nombre,
       apellidos,
@@ -129,14 +143,14 @@ function App() {
   };
 
   const handlerUpdate = async () => {
-    const { numIdentificacion, nombre, apellidos, tipoIdentificacion, numBeneficiarios }= data;
-    const numBeneficiariosInteger = parseInt(numBeneficiarios);
+    const { numIdentificacion, nombre, apellidos, tipoIdentificacion, numBeneficiarios, fechaNacimiento, fechaIngreso}= data;
+    //const numBeneficiariosInteger = parseInt(numBeneficiarios);
     //const estadoCivilInteger = parseInt(estadoCivil);
     //console.log(typeof estadoCivil);
     const estadoCivil = "1";
-    const fechaNacimiento = "10/10/2021";
+    //const fechaNacimiento = "10/10/2021";
     //const numBeneficiarios = "1";
-    const fechaIngreso = "10/10/2023";
+    //const fechaIngreso = "10/10/2023";
     //const numBeneficiariosEntero = parseInt(numBeneficiarios, 10);
     //const tipoIdentificacion = "CC"
     
@@ -262,6 +276,38 @@ function App() {
               />
             </div>
           </div>
+
+          <div className="mb-3">
+            <label className="form-label">Fecha de Nacimiento</label>
+            <div className="input-group">
+               <input
+                type="text"
+                className="form-control"
+                id="basic-url"
+                aria-describedby="basic-addon3 basic-addon4"
+                name="fechaNacimiento"
+                value = {data.fechaNacimiento}
+                onChange = {(e)=> handlerChange(e)}
+              />
+            </div>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Fecha de Ingreso</label>
+            <div className="input-group">
+               <input
+                type="text"
+                className="form-control"
+                id="basic-url"
+                aria-describedby="basic-addon3 basic-addon4"
+                name="fechaIngreso"
+                value = {data.fechaIngreso}
+                onChange = {(e)=> handlerChange(e)}
+              />
+            </div>
+          </div>
+
+
           <div className="mb-3">
             <label className="form-label">Estado Civil</label>
             <div className="input-group">
@@ -292,8 +338,8 @@ function App() {
                 onChange = {(e)=> handlerChange(e)}
               />
            </div>
-            
           </div>
+
           <div className="mb-3">
             <label className="form-label">Tipo de identificacion</label>
             <div className="input-group">
@@ -309,6 +355,24 @@ function App() {
               </select>
             </div>
           </div>
+
+          <div className="mb-3">
+            <label className="form-label">Nombre Imagen</label>
+            <div className="input-group">
+               <input
+                //type="number"
+                type="text"
+                className="form-control"
+                id="basic-url"
+                aria-describedby="basic-addon3 basic-addon4"
+                name="nombreImagen"
+                value = {data.nombreImagen}
+                onChange = {(e)=> handlerChange(e)}
+              />
+           </div>
+          </div>
+
+
         </div>
       <div className="card-body">
         <button
